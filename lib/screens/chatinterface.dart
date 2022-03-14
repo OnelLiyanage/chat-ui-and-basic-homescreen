@@ -12,22 +12,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-	void response(query) async {
-		AuthGoogle authGoogle = await AuthGoogle(
-				fileJson: "assets/dialogflow-chat.json"
-				) .build() ;
-		Dialogflow dialogflow = Dialogflow( authGoogle: authGoogle, language: Language.english);
-		AIResponse aiResponse = await dialogflow.detectIntent(query);
-		setState(() {
-			messages.insert(0, {
-				"data": 0,
-				"message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
-			});
-		});
+	// void response(query) async {
+	// 	AuthGoogle authGoogle = await AuthGoogle(
+	// 			fileJson: "assets/dialogflow-chat.json"
+	// 			) .build() ;
+	// 	Dialogflow dialogflow = Dialogflow( authGoogle: authGoogle, language: Language.english);
+	// 	AIResponse aiResponse = await dialogflow.detectIntent(query);
+	// 	setState(() {
+	// 		messages.insert(0, {
+	// 			"data": 0,
+	// 			"message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
+	// 		});
+	// 	});
 
-		print( aiResponse.getListMessage()[0]["text"]["text"][0].toString() );
+	// 	print( aiResponse.getListMessage()[0]["text"]["text"][0].toString() );
 		
-	}
+	// }
 
 	final messageInsert = TextEditingController();
 	List<Map> messages = [ ];
@@ -37,8 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
 		return Scaffold(
 			appBar: AppBar(
 				title: Center 
-					(child: Text ("Melano")
-				),
+					(
+                        child: Text ("Melano")
+				    ),
 			),
 
 			body: Container ( 
@@ -117,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
 													{ "data" : 1, "message" : messageInsert.text } );
 											});
 
-											response(messageInsert.text);
+											// response(messageInsert.text);
 											messageInsert.clear();
 										}
 
@@ -149,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
 						height: 50.0,
 						width: 50.0,
 						child: CircleAvatar (
-							backgroundImage: AssetImage ("assets/Logo-draft-clear-2.png"),
+							backgroundImage: AssetImage ("assets/images/Logo-draft-clear-2.png"),
 						),
 					) : Container(),
 

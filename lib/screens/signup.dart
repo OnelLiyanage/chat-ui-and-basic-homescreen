@@ -56,7 +56,7 @@ class _SignUpState extends State<SignUp> {
 	Widget build(BuildContext context) {
 	return Scaffold (
 		appBar: AppBar (
-				title: Image.asset("assets/images/logo.png",
+				title: Image.asset("assets/images/Logo-draft-clear-2.png",
 				height: 50,
 				),
 			),
