@@ -11,6 +11,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+// this is the Dialogflow API call and its commented out for the Python file @Nemsara 
 
 	// void response(query) async {
 	// 	AuthGoogle authGoogle = await AuthGoogle(
