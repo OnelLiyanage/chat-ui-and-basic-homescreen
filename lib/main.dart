@@ -22,7 +22,10 @@ class MyApp extends StatelessWidget {
 			title: 'Flutter Demo',
 			debugShowCheckedModeBanner: false,
 			theme: ThemeData(
-				primarySwatch: Colors.blue,
+				// primarySwatch: Colors.blue,
+                // primaryColor: Colors.white,
+               brightness: Brightness.light,
+               backgroundColor: Colors.white
 			),
 			home: Authenticate(),
 		);

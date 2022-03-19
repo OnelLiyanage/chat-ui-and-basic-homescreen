@@ -69,6 +69,8 @@ flutter:
   assets:
     - assets/images/Logo-draft-clear-2.png
     - assets/dialogflow-chat.json
+    - assets/images/AppBar.png
+    - assets/images/AppBar2.png
 
   #   - images/a_dot_ham.jpeg
 

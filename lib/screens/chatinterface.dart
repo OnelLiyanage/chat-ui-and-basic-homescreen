@@ -13,22 +13,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 // this is the Dialogflow API call and its commented out for the Python file @Nemsara 
 
-	// void response(query) async {
-	// 	AuthGoogle authGoogle = await AuthGoogle(
-	// 			fileJson: "assets/dialogflow-chat.json"
-	// 			) .build() ;
-	// 	Dialogflow dialogflow = Dialogflow( authGoogle: authGoogle, language: Language.english);
-	// 	AIResponse aiResponse = await dialogflow.detectIntent(query);
-	// 	setState(() {
-	// 		messages.insert(0, {
-	// 			"data": 0,
-	// 			"message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
-	// 		});
-	// 	});
+	void response(query) async {
+		AuthGoogle authGoogle = await AuthGoogle(
+				fileJson: "assets/dialogflow-chat.json"
+				) .build() ;
+		Dialogflow dialogflow = Dialogflow( authGoogle: authGoogle, language: Language.english);
+		AIResponse aiResponse = await dialogflow.detectIntent(query);
+		setState(() {
+			messages.insert(0, {
+				"data": 0,
+				"message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
+			});
+		});
 
-	// 	print( aiResponse.getListMessage()[0]["text"]["text"][0].toString() );
+		print( aiResponse.getListMessage()[0]["text"]["text"][0].toString() );
 		
-	// }
+	}
 
 	final messageInsert = TextEditingController();
 	List<Map> messages = [ ];
@@ -37,11 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
 	Widget build(BuildContext context) {
 		return Scaffold(
 			appBar: AppBar(
-				title: Center 
-					(
-                        child: Text ("Melano")
-				    ),
-			),
+				title: Text (
+                    "Scan",
+                    style: TextStyle (
+                        color: Colors.white,
+                    ),
+                ),
+                backgroundColor: Color.fromARGB(169, 49, 163, 139),
+                elevation: 0,
+            ),
 
 			body: Container ( 
 				child: Column (
@@ -119,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
 													{ "data" : 1, "message" : messageInsert.text } );
 											});
 
-											// response(messageInsert.text);
+											response(messageInsert.text);
 											messageInsert.clear();
 										}
 
@@ -148,8 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
 				mainAxisAlignment: data == 1 ? MainAxisAlignment.end : MainAxisAlignment.start,
 				children: [
 					data == 0 ? Container(
-						height: 50.0,
-						width: 50.0,
+						height: 40.0,
+						width: 40.0,
 						child: CircleAvatar (
 							backgroundImage: AssetImage ("assets/images/Logo-draft-clear-2.png"),
 						),
@@ -159,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
 						padding: EdgeInsets.all(5.0),
 						child: Bubble (
 							radius: Radius.circular(5.0),
-							color: data==0 ? Color.fromRGBO(23, 157, 139, 1) : Colors.blue.shade200,
+							color: data==0 ? Color.fromARGB(255, 49, 163, 138) : Color.fromARGB(255, 49, 135, 192),
 							elevation: 0.0,
 
 							child:  Padding (

@@ -56,124 +56,131 @@ class _SignUpState extends State<SignUp> {
 	Widget build(BuildContext context) {
 	return Scaffold (
 		appBar: AppBar (
-				title: Image.asset("assets/images/Logo-draft-clear-2.png",
-				height: 50,
+			title: Center(
+				child: Image.asset("assets/images/AppBar2.png",
+				height: 30,
 				),
 			),
+            backgroundColor: Colors.white,
+            elevation: 0,
+		),
 			
 			body: isLoading ? Container(
 				child: Center (
 					child: CircularProgressIndicator()
 					), 
-				) : Container(
-				alignment: Alignment.bottomCenter,
-							child: Container(
-								padding: EdgeInsets.symmetric(horizontal: 25.0),
-									child: Column (
-										mainAxisSize: MainAxisSize.min,
-									children: [
-										Form(
-											key: formKey,
-										child: Column(
-										children: [
-											TextFormField(
-												validator: (val) {
-													return val!.isEmpty || val.length < 3 ? "Username should contain a minimum of 3 characters." : null ;
-												},
-												controller: userNameTextEditingController,
-												decoration: inputFeildDecoration ("Username"),
-											),
-											SizedBox(height: 20.0),
+				) : SingleChildScrollView(
+                        child: Container(
+                            alignment: Alignment.bottomCenter,
+                                child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 25.0),
+                                    child: Column (
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                            Form(
+                                                key: formKey,
+                                            child: Column(
+                                            children: [
+                                            SizedBox(height: 40.0),
+                                                TextFormField(
+                                                    validator: (val) {
+                                                        return val!.isEmpty || val.length < 3 ? "Username should contain a minimum of 3 characters." : null ;
+                                                    },
+                                                    controller: userNameTextEditingController,
+                                                    decoration: inputFeildDecoration ("Username"),
+                                                ),
+                                                SizedBox(height: 20.0),
 
-											TextFormField(
-												validator: (val) {
-													return _email.hasMatch(val!) ? null : "Invalid Email";
-												},
-												controller: emailTextEditingController,
-												decoration: inputFeildDecoration ("Email"),
-											),
-											SizedBox(height: 20.0),
+                                                TextFormField(
+                                                    validator: (val) {
+                                                        return _email.hasMatch(val!) ? null : "Invalid Email";
+                                                    },
+                                                    controller: emailTextEditingController,
+                                                    decoration: inputFeildDecoration ("Email"),
+                                                ),
+                                                SizedBox(height: 20.0),
 
-											TextFormField(
-												obscureText: true,
-												validator: (val) {
-													return val!.length > 6 ? null : "Password should contain more than 6 characters." ;
-												},
-												controller: passwordTextEditingController,
-												decoration: inputFeildDecoration ("Password"),
-											),
-										],
-										),
-									),
-									SizedBox(height: 20.0),
+                                                TextFormField(
+                                                    obscureText: true,
+                                                    validator: (val) {
+                                                        return val!.length > 6 ? null : "Password should contain more than 6 characters." ;
+                                                    },
+                                                    controller: passwordTextEditingController,
+                                                    decoration: inputFeildDecoration ("Password"),
+                                                ),
+                                            ],
+                                            ),
+                                        ),
+                                        SizedBox(height: 20.0),
 
-									// Container(
-									// 	child: Container ( 
-									// 		alignment: Alignment.centerRight,
-									// 		padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-									// 		child: Text (
-									// 			"Forgot Password",
-									// 			style: TextStyle (
-									// 				fontSize: 14.0
-									// 			),
-									// 		),
-									// 	),
-									// ),
-									SizedBox( height: 20.0,),
+                                        // Container(
+                                        // 	child: Container ( 
+                                        // 		alignment: Alignment.centerRight,
+                                        // 		padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                                        // 		child: Text (
+                                        // 			"Forgot Password",
+                                        // 			style: TextStyle (
+                                        // 				fontSize: 14.0
+                                        // 			),
+                                        // 		),
+                                        // 	),
+                                        // ),
+                                        SizedBox( height: 20.0,),
 
-									GestureDetector(
-										onTap: () {
-											signUpUser();
-										},
-										child: Container(
-											alignment: Alignment.center,
-											width: MediaQuery.of(context).size.width,
-											padding: EdgeInsets.symmetric(vertical: 20),
-											decoration: BoxDecoration(
-												gradient: LinearGradient (
-													colors:  [
-														const Color(0xff007EF4),
-														const Color(0xff2A75DA) 
-														]
-												),
-												borderRadius: BorderRadius.circular(25)
-											),
-											child: Text (
-												"Sign Up",
-												style: TextStyle (
-													fontSize: 18.0,
-													color: Colors.white,
-												),
-											),
-										),
-									),
+                                        GestureDetector(
+                                            onTap: () {
+                                                signUpUser();
+                                            },
+                                            child: Container(
+                                                alignment: Alignment.center,
+                                                width: MediaQuery.of(context).size.width,
+                                                padding: EdgeInsets.symmetric(vertical: 20),
+                                                decoration: BoxDecoration(
+                                                    gradient: LinearGradient (
+                                                        colors:  [
+                                                            const Color.fromARGB(169, 49, 163, 139),
+                                                            const Color.fromARGB(178, 49, 163, 138), 
+                                                            ]
+                                                    ),
+                                                    borderRadius: BorderRadius.circular(25)
+                                                ),
+                                                child: Text (
+                                                    "Sign Up",
+                                                    style: TextStyle (
+                                                        fontSize: 18.0,
+                                                        color: Colors.white,
+                                                    ),
+                                                ),
+                                            ),
+                                        ),
 
-									SizedBox(height: 20.0),
-									Row(
-										mainAxisAlignment: MainAxisAlignment.center,
-										children: [
-											Text ("Have an account? "),
-											GestureDetector ( 
-												onTap : () {
-													widget.toggle();
-												} ,
-											child: Container(
-												padding: EdgeInsets.symmetric(vertical: 8.0),
-											child: Text(
-												" Login here ",
-												style: TextStyle (
-													decoration: TextDecoration.underline
-												),
-												),
-											),
-										)
-										],
-									),
-									SizedBox(height: 100.0),
-									],
-								),
-							),
-						),
+                                        SizedBox(height: 20.0),
+                                        Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                                Text ("Have an account? "),
+                                                GestureDetector ( 
+                                                    onTap : () {
+                                                        widget.toggle();
+                                                    } ,
+                                                child: Container(
+                                                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                                                child: Text(
+                                                    " Login here ",
+                                                    style: TextStyle (
+                                                        decoration: TextDecoration.underline
+                                                    ),
+                                                    ),
+                                                ),
+                                            )
+                                            ],
+                                        ),
+                                        SizedBox(height: 10.0),
+                                        ],
+                                            ),
+                                        ),
+                                    ),
+                                ),
 		);
 	}
 }
